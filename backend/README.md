@@ -42,3 +42,53 @@ REST API untuk platform watchlist dan review film, dibuat dengan Node.js, Expres
    Server berjalan di `http://localhost:8000`.
 
 5. (Opsional) Buka `frontend/index.html` di browser untuk mencoba lewat antarmuka.
+
+## Desain Database (ERD)
+
+```mermaid
+erDiagram
+    users ||--o{ watchlists : "menyimpan"
+    movies ||--o{ watchlists : "disimpan di"
+    users ||--o{ reviews : "menulis"
+    movies ||--o{ reviews : "diulas di"
+    movies ||--o{ movie_genres : "punya"
+    genres ||--o{ movie_genres : "dipakai oleh"
+
+    users {
+        int id PK
+        text username
+        text email UK
+        text password_hash
+    }
+    movies {
+        int id PK
+        text title
+        int year
+        text director
+        real rating
+        text duration
+        text synopsis
+        text poster_url
+        text cast_members
+    }
+    genres {
+        int id PK
+        text name UK
+    }
+    movie_genres {
+        int movie_id PK, FK
+        int genre_id PK, FK
+    }
+    watchlists {
+        int user_id PK, FK
+        int movie_id PK, FK
+    }
+    reviews {
+        int id PK
+        int user_id FK
+        int movie_id FK
+        int rating
+        text review
+        text created_at
+    }
+```
