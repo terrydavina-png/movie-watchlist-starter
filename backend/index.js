@@ -35,16 +35,6 @@ function formatMovie(movie) {
   return { ...movie, genres, cast };
 }
 
-
-app.get('/api/me', authMiddleware, (req, res) => {
-  res.json({ userId: req.userId });
-});
-
-
-app.get('/api/hello', (req, res) => {
- res.json({ message: 'halo dari server!'});
-});
-
 app.get('/api/ping', (req, res) => {
  res.json({ status : 'ok'});
 });

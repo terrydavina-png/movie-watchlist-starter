@@ -53,6 +53,9 @@ db.exec(`
         FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
         FOREIGN KEY (movie_id) REFERENCES movies (id) ON DELETE CASCADE
     );
+
+    CREATE INDEX IF NOT EXISTS idx_reviews_user ON reviews(user_id);
+    CREATE INDEX IF NOT EXISTS idx_reviews_movie ON reviews(movie_id);
 `);
 
 module.exports = db;
