@@ -4,3 +4,6 @@ Thumbs.db
 .env
 .env.local
 filmlog.db
+node_modules/
+.env
+*.db
