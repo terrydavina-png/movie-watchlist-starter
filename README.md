@@ -1,3 +1,5 @@
+> **Dokumentasi backend** (setup, endpoint, desain database): lihat [backend/README.md](backend/README.md)
+
 # FilmLog — GDGoC Backend Recruitment Task Starter Pack
 
 Selamat datang di repositori penugasan backend **FilmLog (Movie Watchlist & Review Platform)**. Repositori ini menyediakan:
