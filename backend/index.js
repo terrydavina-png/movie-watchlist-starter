@@ -47,9 +47,19 @@ app.get('/api/ping', (req, res) => {
 });
 
 app.get('/api/movies', (req, res) => {
+  const { genre, search } = req.query;
   const movies = db.prepare('SELECT * FROM movies').all();
-  const result = movies.map(formatMovie);
+  let result = movies.map(formatMovie);
+  if (genre) {
+    result = result.filter(movie => movie.genres.some(g => g.toLowerCase() === genre.toLowerCase()));
+  }
+
+  if (search) {
+    result = result.filter(movie => movie.title.toLowerCase().includes(search.toLowerCase()));
+  }
+
   res.json(result);
+
 });
 
 app.get('/api/movies/:id', (req, res) => {
@@ -161,7 +171,6 @@ app.post('/api/watched', authMiddleware, (req, res) => {
   const result = insertReview.run(req.userId, movieId, rating, review ?? null);
   res.status(201).json({ id: result.lastInsertRowid, userId: req.userId, movieId, rating, review });
 });
-
 
 
 
