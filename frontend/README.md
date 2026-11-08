@@ -1,5 +1,3 @@
-> **Dokumentasi backend** (setup, endpoint, desain database): lihat [backend/README.md](backend/README.md)
-
 # FilmLog — Frontend Companion
 
 Aplikasi frontend sederhana bertema **Letterboxd / IMDb** yang dirancang sebagai antarmuka pengujian bagi peserta penugasan Backend GDGoC.
